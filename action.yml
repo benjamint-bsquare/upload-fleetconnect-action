@@ -1,18 +1,43 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'upload-fleetconnect'
+description: 'This action upload artifact to FleetConnect as a package version that can be deployed.'
+author: 'benjamin.tucker@kontron.com'
 
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  fleetconnect_client_id:
+    description: 'FleetConnect Client ID credential'
     required: true
-    default: '1000'
 
-# Define your outputs here.
+  fleetconnect_client_secret:
+    description: 'FleetConnect Client Secret credential'
+    required: true
+
+  fleetconnect_token_endpoint:
+    description: 'FleetConnect Token Endpoint'
+    required: true
+
+  source_dir:
+    description: 'The local directory (or file) you wish to upload. Directories are uploaded as FleetConnect Tar Package files'
+    required: true
+
+  package_name:
+    description: 'The name of the package to create'
+    required: true
+
+  package_category:
+    description: 'The category of the package to create'
+    required: true
+    default: `artifact`
+
+  package_description:
+    description: 'The a description for the package'
+    required: false
+
 outputs:
-  time:
-    description: 'Your output description here'
+  package_id:
+    description: 'The package ID'
+
+  package_version_id:
+    description: 'The package version ID'
 
 runs:
   using: node20
